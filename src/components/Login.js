@@ -15,9 +15,13 @@ class Login extends Component {
 	}
 
 	login = () => {
-		fakeAuth.authenticate(() => {
-			this.setState({ redirectToReferrer: true });
-		});
+		if (this.state.username === "Admin" && this.state.password === "12345") {
+			fakeAuth.authenticate(() => {
+				this.setState({ redirectToReferrer: true });
+			});
+		} else {
+			alert("Имя пользователя или пароль введены не верно");
+		}
 	};
 
 	validateForm() {
@@ -27,7 +31,7 @@ class Login extends Component {
 	handleChange = event => {
 		this.setState({
 			[event.target.id]: event.target.value
-        });
+		});
 	};
 
 	handleSubmit = event => {
@@ -45,7 +49,7 @@ class Login extends Component {
 				<p>You must log in to view the page at {from.pathname}</p>
 				<form onSubmit={this.handleSubmit}>
 					<FormGroup controlId="username">
-						<FormLabel>Email</FormLabel>
+						<FormLabel>Username</FormLabel>
 						<FormControl
 							autoFocus
 							type="text"
