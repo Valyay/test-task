@@ -20,7 +20,7 @@ class Login extends Component {
 				this.setState({ redirectToReferrer: true });
 			});
 		} else {
-			alert("Имя пользователя или пароль введены не верно");
+			alert("Имя пользователя или пароль введены неверно");
 		}
 	};
 
