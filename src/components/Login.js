@@ -20,6 +20,7 @@ class Login extends Component {
 				this.setState({ redirectToReferrer: true });
 			});
 		} else {
+			this.setState({ username: "", password: "" });
 			alert("Имя пользователя или пароль введены неверно");
 		}
 	};
