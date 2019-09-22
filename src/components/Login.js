@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { authActions } from "/Users/valyay/projects/test-task/src/redux/actions/authActions.js";
+
 
 class Login extends Component {
 	constructor(props) {
@@ -78,4 +81,15 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+	const auth = state.authReducer;
+	return auth;
+}
+
+const mapDispatchToProps = dispatch => ({
+	login: () => dispatch(authActions.login()),
+	logout: () => dispatch(authActions.logout())
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps) (Login);
+
