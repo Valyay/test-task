@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import fakeAuth from "./fakeAuth.js";
 
 class Login extends Component {
 	constructor(props) {
@@ -16,9 +15,8 @@ class Login extends Component {
 
 	login = () => {
 		if (this.state.username === "Admin" && this.state.password === "12345") {
-			fakeAuth.authenticate(() => {
+				localStorage.setItem("redirectToReferrer", true);
 				this.setState({ redirectToReferrer: true });
-			});
 		} else {
 			this.setState({ username: "", password: "" });
 			alert("Имя пользователя или пароль введены неверно");

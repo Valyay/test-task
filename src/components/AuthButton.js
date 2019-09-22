@@ -2,16 +2,16 @@ import React from "react";
 import {
     withRouter
   } from "react-router-dom";
-import fakeAuth from "./fakeAuth.js"
 
 const AuthButton = withRouter(
     ({ history }) =>
-      fakeAuth.isAuthenticated ? (
+    (localStorage.getItem("redirectToReferrer") === "true") ? (
         <p>
           Welcome!{" "}
           <button
             onClick={() => {
-              fakeAuth.signout(() => history.push("/"));
+              localStorage.setItem("redirectToReferrer", false);
+              return history.push("/");
             }}
           >
             Sign out
