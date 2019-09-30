@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import { login } from "/Users/valyay/projects/test-task/src/redux/actions/authActions.js";
+import { login } from "../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
 
 class Login extends Component {

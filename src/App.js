@@ -2,10 +2,10 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
-import Home from "./components/Home.js";
-import Login from "./components/Login.js";
-import Profile from "./components/Profile.js";
-import News from "./components/News.js";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import News from "./components/News";
 
 function App() {
 	return (

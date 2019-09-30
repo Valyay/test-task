@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import authReducer from "/Users/valyay/projects/test-task/src/redux/reducers/authReducer.js";
+import authReducer from "./reducers/authReducer";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 

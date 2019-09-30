@@ -1,4 +1,4 @@
-import { authConstants } from "/Users/valyay/projects/test-task/src/redux/actions/authConstants.js";
+import { authConstants } from "../actions/authConstants";
 
 const defaultState = {
 	authenticated: false,

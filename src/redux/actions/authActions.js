@@ -1,4 +1,4 @@
-import { setLoginPending, setLoginSuccess, setLoginError } from "/Users/valyay/projects/test-task/src/redux/actions/authConstants.js";
+import { setLoginPending, setLoginSuccess, setLoginError } from "../actions/authConstants";
 
 export function login(username, password) {
   return dispatch => {
