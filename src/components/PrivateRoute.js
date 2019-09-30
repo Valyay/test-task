@@ -6,7 +6,7 @@ function PrivateRoute({ component: Component, ...rest }) {
       <Route
         {...rest}
         render={props =>
-          (localStorage.getItem("redirectToReferrer") === "true") ? (
+          (localStorage.getItem("auth") === "true") ? (
             <Component {...props} />
           ) : (
             <Redirect

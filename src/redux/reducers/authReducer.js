@@ -1,24 +1,30 @@
-import { authActions } from "/Users/valyay/projects/test-task/src/redux/actions/authActions.js";
+import { authConstants } from "/Users/valyay/projects/test-task/src/redux/actions/authConstants.js";
 
 const defaultState = {
-	authenticated: false
+	authenticated: false,
+	isLoginSuccess: false,
+	isLoginPending: false,
+	loginError: null
 };
-
-const authReducer = (state = defaultState, action) => {
+export default function authReducer(state = defaultState, action) {
 	switch (action.type) {
-		case authActions.login:
-			return {
-				authenticated: true
-			};
+		case authConstants.SET_LOGIN_PENDING:
+			return Object.assign({}, state, {
+				isLoginPending: action.isLoginPending
+			});
 
-		case authActions.logout:
-			return {
-				authenticated: false
-			};
+		case authConstants.SET_LOGIN_SUCCESS:
+			return Object.assign({}, state, {
+				isLoginSuccess: action.isLoginSuccess,
+				authenticated: true
+			});
+
+		case authConstants.SET_LOGIN_ERROR:
+			return Object.assign({}, state, {
+				loginError: action.loginError
+			});
 
 		default:
 			return state;
 	}
-};
-
-export default authReducer;
+}

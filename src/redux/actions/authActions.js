@@ -1,23 +1,14 @@
-const LOGIN_REQUEST = 'USERS_LOGIN_REQUEST';
-//const LOGIN_SUCCESS = 'USERS_LOGIN_SUCCESS';
-//const LOGIN_FAILURE = 'USERS_LOGIN_FAILURE';
+import { setLoginPending, setLoginSuccess, setLoginError } from "/Users/valyay/projects/test-task/src/redux/actions/authConstants.js";
 
-const LOGOUT = 'USERS_LOGOUT';// action types
-
-const login = () => {
-    return {
-      type: LOGIN_REQUEST
-    }
-  };
-  
-  const logout = () => {
-    return {
-      type: LOGOUT
-    }
-  };
-
-  export const authActions = {
-    login,
-    logout
-};
+export function login(username, password) {
+  return dispatch => {
+      dispatch(setLoginPending(false));
+      if (username === 'Admin' && password === '12345') {
+        dispatch(setLoginSuccess(true));
+        localStorage.setItem('auth', true);
+      } else {
+        dispatch(setLoginError('Invalid username and password'));
+      }
+    };
+  }
 

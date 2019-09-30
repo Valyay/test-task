@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
-import AuthButton from "./components/AuthButton.js";
 import Home from "./components/Home.js";
 import Login from "./components/Login.js";
 import Profile from "./components/Profile.js";
@@ -14,7 +13,6 @@ function App() {
 			<div className="App">
 				<header className="App-header">
 					<div>
-						<AuthButton />
 						<ul>
 							<li>
 								<Link to="/">Home</Link>

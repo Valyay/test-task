@@ -1,30 +1,20 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import { authActions } from "/Users/valyay/projects/test-task/src/redux/actions/authActions.js";
-
+import { login } from "/Users/valyay/projects/test-task/src/redux/actions/authActions.js";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			username: "",
-			password: "",
-			redirectToReferrer: false
-		};
+            username: '',
+            password: '',
+        };
+		this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 	}
-
-	login = () => {
-		if (this.state.username === "Admin" && this.state.password === "12345") {
-				localStorage.setItem("redirectToReferrer", true);
-				this.setState({ redirectToReferrer: true });
-		} else {
-			this.setState({ username: "", password: "" });
-			alert("Имя пользователя или пароль введены неверно");
-		}
-	};
 
 	validateForm() {
 		return this.state.username.length > 0 && this.state.password.length > 0;
@@ -38,13 +28,22 @@ class Login extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
+		const { username, password } = this.state;
+
+        if (username && password) {
+			this.props.login(username, password);
+        }
 	};
 
 	render() {
 		let { from } = this.props.location.state || { from: { pathname: "/" } };
-		let { redirectToReferrer } = this.state;
+		let {username, password} = this.state;
+		let { authenticated } = this.props;
 
-		if (redirectToReferrer) return <Redirect to={from} />;
+		if(authenticated){
+			this.props.history.push("/profile");
+		}
+
 
 		return (
 			<div>
@@ -55,14 +54,14 @@ class Login extends Component {
 						<FormControl
 							autoFocus
 							type="text"
-							value={this.state.username}
+							value={username}
 							onChange={this.handleChange}
 						/>
 					</FormGroup>
 					<FormGroup controlId="password">
 						<FormLabel>Password</FormLabel>
 						<FormControl
-							value={this.state.password}
+							value={password}
 							onChange={this.handleChange}
 							type="password"
 						/>
@@ -82,14 +81,18 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-	const auth = state.authReducer;
-	return auth;
-}
+	return {
+	  isLoginPending: state.isLoginPending,
+	  isLoginSuccess: state.isLoginSuccess,
+	  authenticated: state.authenticated,
+	  loginError: state.loginError
+	};
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+	return {
+	  login: (username, password) => dispatch(login(username, password))
+	};
+  }
 
-const mapDispatchToProps = dispatch => ({
-	login: () => dispatch(authActions.login()),
-	logout: () => dispatch(authActions.logout())
-  });
-
-export default connect(mapStateToProps, mapDispatchToProps) (Login);
-
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (Login));
