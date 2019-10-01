@@ -16,11 +16,11 @@ class App extends Component {
 		this.state = {};
 	}
 	render() {
-		let { authenticated } = this.props;
+		let auth  = localStorage.getItem("auth");
 		return (
 			<Router>
 				<Navbar />
-				{authenticated && <Logout />}
+				{auth && <Logout />}
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path="/login" component={Login} />
