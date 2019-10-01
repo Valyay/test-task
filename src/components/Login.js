@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { login } from "../redux/actions/authActions";
 import { withRouter } from "react-router-dom";
+import '../styles/login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -46,8 +47,7 @@ class Login extends Component {
 
 
 		return (
-			<div>
-				<p>You must log in to view the page at {from.pathname}</p>
+			<div className="d-flex justify-content-center align-items-center">
 				<form onSubmit={this.handleSubmit}>
 					<FormGroup controlId="username">
 						<FormLabel>Username</FormLabel>
@@ -66,14 +66,17 @@ class Login extends Component {
 							type="password"
 						/>
 					</FormGroup>
+
 					<Button
 						onClick={this.login}
 						block
 						disabled={!this.validateForm()}
 						type="submit"
+					
 					>
 						Login
 					</Button>
+
 				</form>
 			</div>
 		);
