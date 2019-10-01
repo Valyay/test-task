@@ -1,30 +1,38 @@
-const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
-const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
-const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+const LOGIN_REQUEST = 'LOGIN_REQUEST';
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGIN_ERROR = 'LOGIN_ERROR';
+const LOGOUT = 'LOGOUT';
 
-export function setLoginPending(isLoginPending) {
+export function loginRequest(isLoginRequest) {
   return {
-    type: SET_LOGIN_PENDING,
-    isLoginPending
+    type: LOGIN_REQUEST,
+    isLoginRequest
   };
 }
 
-export function setLoginSuccess(isLoginSuccess) {
+export function loginSuccess(isLoginSuccess) {
   return {
-    type: SET_LOGIN_SUCCESS,
+    type: LOGIN_SUCCESS,
     isLoginSuccess
   };
 }
 
-export function setLoginError(loginError) {
+export function loginError(loginError) {
   return {
-    type: SET_LOGIN_ERROR,
+    type: LOGIN_ERROR,
     loginError
   }
 }
 
+export function logoutAction() {
+  return {
+    type: LOGOUT
+  }
+}
+
 export const authConstants = {
-  SET_LOGIN_PENDING,
-  SET_LOGIN_SUCCESS,
-  SET_LOGIN_ERROR
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT
 }
