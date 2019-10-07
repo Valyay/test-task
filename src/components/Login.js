@@ -37,9 +37,9 @@ class Login extends Component {
 	};
 
 	render() {
-		let { from } = this.props.location.state || { from: { pathname: "/" } };
+		//let { from } = this.props.location.state || { from: { pathname: "/" } };
 		let {username, password} = this.state;
-		let { authenticated } = this.props;
+		let { authenticated, loginError } = this.props;
 
 		if(authenticated){
 			this.props.history.push("/profile");
@@ -76,9 +76,10 @@ class Login extends Component {
 					>
 						Login
 					</Button>
-
+					{loginError && <div class="alert alert-danger" role="alert">{loginError}</div>}
 				</form>
 			</div>
+			
 		);
 	}
 }
