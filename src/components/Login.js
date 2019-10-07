@@ -37,7 +37,6 @@ class Login extends Component {
 	};
 
 	render() {
-		//let { from } = this.props.location.state || { from: { pathname: "/" } };
 		let {username, password} = this.state;
 		let { authenticated, loginError } = this.props;
 
@@ -76,7 +75,7 @@ class Login extends Component {
 					>
 						Login
 					</Button>
-					{loginError && <div class="alert alert-danger" role="alert">{loginError}</div>}
+					{loginError && <div className="alert alert-danger" role="alert">{loginError}</div>}
 				</form>
 			</div>
 			
